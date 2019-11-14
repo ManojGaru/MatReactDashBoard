@@ -1,10 +1,11 @@
 import * as React from "react"
 import { makeStyles,withStyles } from '@material-ui/core/styles';
-import { Divider, Grid,Container,Typography, FormControl, NativeSelect, InputBase, Tabs, Tab, } from '@material-ui/core';
+import { Divider, Grid,Container,Typography, FormControl, NativeSelect, InputBase } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import MatBalanceCard from '../../component/MatBalanceCard';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { FaHeartbeat } from 'react-icons/fa';
+import { Tab,Row,Col,Nav } from 'react-bootstrap';
 
 
 
@@ -148,6 +149,9 @@ selectBorder:{
     //color: '#FFF'
 }
 },
+active:{
+  color:'#000000S'
+}
 }));
 
 const months = [
@@ -173,8 +177,18 @@ const years =[
 
 export default function Home() {
   const classes = useStyles();
-  //const [cbc,setCbc]=useState("");
+  const fbtnbackcolo= "#0D9DC7";
+  const ftxtbackcolo="#ffffff";
 
+  const handleButton=()=>{
+    //fbtnbackcolo="#0D9DC7";
+    //ftxtbackcolo="#ffffff";
+    console.log('fbtnbackcolo,fbtnbackcolo', );
+    
+    //lbtnbackcolo="#0D9DC7";
+    //ltxtbackcolo="#ffffff";
+
+  }
 
   return (
     <div className={classes.root}>
@@ -196,7 +210,7 @@ export default function Home() {
             </Grid>
            <Grid container direction="row">
           <Typography style={{fontFamily:'Lucida Sans',marginTop:30,marginLeft:10,fontSize:21,fontWeight:'bold',color:'#0D9DC7'}}>BetterY</Typography>
-          <Typography style={{fontFamily:'Lucida Sans',marginTop:28,marginLeft:0,marginRight:-10, fontSize:27,fontWeight:'bold',color:'#155724'}}>`</Typography>
+          <Typography style={{fontFamily:'Lucida Sans',marginTop:28,marginLeft:0,marginRight:-10, fontSize:27,fontWeight:'bold',color:'rgb(37, 181, 70)'}}>`</Typography>
           <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#FA7703'}}>o</Typography>
           <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#0D9DC7'}}>u</Typography>
           <Typography style={{fontFamily:'Lucida Sans', marginTop:32,marginLeft:5,fontSize:18,color:'rgb(7, 123, 34)'}}  className={classes.linkText}>REWARDS</Typography>
@@ -243,7 +257,7 @@ export default function Home() {
              </Grid>
              </Grid>
              </Grid>
-             <Grid container direction="row" className={classes.cardMargin}>
+             <Grid  container direction="row" className={classes.cardMargin}>
                  <Grid xs={5}><MatBalanceCard fullborder={false} allprice={false} titile={"Available Rewards Balance"}></MatBalanceCard></Grid>
                  <Grid xs={1}></Grid>
                  <Grid xs={5}><MatBalanceCard fullborder={false} allprice={true} titile={"Earned Rewards"} ></MatBalanceCard></Grid>
@@ -258,8 +272,16 @@ export default function Home() {
      <Divider style={{marginRight:100}}></Divider>
      <Grid container direction="row" style={{marginTop:10,marginBottom:10}}>
          <Grid xs={3}>
-             <Grid container direction="row" style={{border:'1px solid #0D9DC7',borderRadius:3,height:35,}}>
-              <Grid xs={6} className={classes.greenButton} style={{borderRight:'1.3px solid #0D9DC7',textAlign:'center',paddingTop:6,cursor:'pointer',color:'#fff' ,backgroundColor: '#0D9DC7',}} >
+             {/* <Grid container direction="row" style={{border:'1px solid #0D9DC7',borderRadius:3,height:35,}}>
+              <Grid onClick={handleButton} xs={6} 
+              className={classes.greenButton} 
+              style={{
+                borderRight:'1.3px solid #0D9DC7',
+                textAlign:'center',
+                paddingTop:6,
+                cursor:'pointer',
+                color:ftxtbackcolo ,
+                backgroundColor: fbtnbackcolo,}} >
                 
                 <Typography  className={classes.btnTextFont} style={{fontSize:15}}>Eligible Rewards</Typography>
               
@@ -267,17 +289,36 @@ export default function Home() {
               <Grid xs={6} className={classes.greenButton} style={{textAlign:'center',paddingTop:6,cursor:'pointer'}}>
               <Typography className={classes.btnTextFont} style={{fontSize:15}}>Complement Rewards</Typography>
                 </Grid>
-            </Grid> 
-            {/* <Tabs  style={{border:'1px solid #0D9DC7',borderRadius:3,height:20,}}
-   value={value}
-    indicatorColor="primary"
-    textColor="primary"
-    onChange={handleChange}
-    aria-label="disabled tabs example"
-  >
-    <Tab label="Active"  className={classes.greenButton} style={{borderRight:'1px solid #0D9DC7',textAlign:'center',paddingTop:6,cursor:'pointer',color:'#fff' ,backgroundColor: '#0D9DC7',}}/>
-    <Tab label="Active" className={classes.greenButton} style={{textAlign:'center',paddingTop:6,cursor:'pointer'}}/>
-  </Tabs> */}
+            </Grid> */}
+
+<Tab.Container id="left-tabs-example" defaultActiveKey="first">
+  <Row >
+   
+      <Nav variant="pills" className="flex-row" style={{border:'1px solid #0D9DC7',borderRadius:3,height:35,}}>
+        <Nav.Item >
+          <Nav.Link style={{height:34}} eventKey="first">
+          <Typography  className={classes.btnTextFont} style={{fontSize:15,marginTop:-2}}>Eligible Rewards</Typography>
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item >
+          <Nav.Link style={{height:33,}} activeClassName="active" eventKey="second">
+          <Typography className={classes.btnTextFont} style={{fontSize:15, marginTop:-2}}>Complement Rewards</Typography>
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+  
+    {/* <Col sm={9}>
+      <Tab.Content>
+        <Tab.Pane eventKey="first">
+         
+        </Tab.Pane>
+        <Tab.Pane eventKey="second">
+         
+        </Tab.Pane>
+      </Tab.Content>
+    </Col> */}
+  </Row>
+</Tab.Container>
          </Grid>
          <Grid xs={6}></Grid>
          <Grid xs={2}>

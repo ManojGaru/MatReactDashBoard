@@ -2,6 +2,7 @@
 import React from 'react';
 import './App.css';
 import Home from './screens/home/MatHome';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
