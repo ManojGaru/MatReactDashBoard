@@ -196,7 +196,7 @@ export default function Home() {
             </Grid>
            <Grid container direction="row">
           <Typography style={{fontFamily:'Lucida Sans',marginTop:30,marginLeft:10,fontSize:21,fontWeight:'bold',color:'#0D9DC7'}}>BetterY</Typography>
-          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#155724'}}>'</Typography>
+          <Typography style={{fontFamily:'Lucida Sans',marginTop:28,marginLeft:0,marginRight:-10, fontSize:27,fontWeight:'bold',color:'#155724'}}>`</Typography>
           <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#FA7703'}}>o</Typography>
           <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#0D9DC7'}}>u</Typography>
           <Typography style={{fontFamily:'Lucida Sans', marginTop:32,marginLeft:5,fontSize:18,color:'rgb(7, 123, 34)'}}  className={classes.linkText}>REWARDS</Typography>
