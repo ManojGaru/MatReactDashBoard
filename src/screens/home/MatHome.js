@@ -4,6 +4,8 @@ import { Divider, Grid,Container,Typography, FormControl, NativeSelect, InputBas
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import MatBalanceCard from '../../component/MatBalanceCard';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { FaHeartbeat } from 'react-icons/fa';
+
 
 
 const BootstrapInput = withStyles(theme => ({
@@ -105,8 +107,8 @@ const useStyles = makeStyles(theme => ({
   },
   btnTextFontLastOne:{
     fontFamily:'Futara',
-    color:'#007bff',
-    fontSize:18
+    color:'#2763a2',
+    fontSize:17
   },
  
   btnTextFontLast:{
@@ -282,8 +284,8 @@ export default function Home() {
              <Grid container direction="row">
                <Grid xs={5}>
                <Grid container direction="row">
-               <FavoriteIcon className={classes.btnTextFontLastOne}>
-                 </FavoriteIcon>
+               <FaHeartbeat className={classes.btnTextFontLastOne}>
+                 </FaHeartbeat>
                  {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avatar} /> */}
                  <Typography style={{fontSize:13}} className={classes.btnTextFont}>Eligible</Typography>
               </Grid>
