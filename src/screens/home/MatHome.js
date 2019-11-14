@@ -1,15 +1,16 @@
-import React from 'react';
+import * as React from "react"
 import { makeStyles,withStyles } from '@material-ui/core/styles';
-import { Avatar, Divider, Grid,Container,ButtonGroup,Button,Typography, FormControl, InputLabel, NativeSelect, InputBase } from '@material-ui/core';
-import PanoramaFishEyeIcon from '@material-ui/icons/PanoramaFishEye';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import { Divider, Grid,Container,Typography, FormControl, NativeSelect, InputBase, Tabs, Tab, } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import MatBalanceCard from '../../component/MatBalanceCard';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 
 const BootstrapInput = withStyles(theme => ({
     root: {
       'label + &': {
         marginTop: theme.spacing(3),
+      
       },
     },
     input: {
@@ -33,6 +34,11 @@ const BootstrapInput = withStyles(theme => ({
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
       ].join(','),
+      '&:hover': {
+        borderWidth:1,
+        borderColor:'rgb(7, 123, 34)'
+       // border:'1px sold #ffffff',
+    },
       '&:focus': {
         borderRadius: 4,
         borderColor: '#80bdff',
@@ -44,7 +50,8 @@ const BootstrapInput = withStyles(theme => ({
 const useStyles = makeStyles(theme => ({
   root: {
     flexGGrid: 1,
-    marginLeft:50,marginRight:10
+    marginLeft:120,
+    marginRight:10
   },
  
   bigAvatar:{
@@ -98,12 +105,14 @@ const useStyles = makeStyles(theme => ({
   },
   btnTextFontLastOne:{
     fontFamily:'Futara',
-    color:'#007bff'
+    color:'#007bff',
+    fontSize:18
   },
  
   btnTextFontLast:{
     fontFamily:'Futara',
-    color:'#155724'
+    color:'#155724',
+    fontSize:18
   },
   boldText:{
     fontWeight:'bold'
@@ -124,12 +133,19 @@ const useStyles = makeStyles(theme => ({
   },
   greenButton: {
     backgroundColor: '#ffffff',
-    color: '#2E86C1',
+    color: '#0D9DC7',
     '&:hover': {
-        backgroundColor: '#2E86C1',
+        backgroundColor: '#0D9DC7',
         color: '#FFF'
     }
+},
+selectBorder:{
+  '&:hover': {
+    border:'1px sold red',
+    borderColor: '#0D9DC7',
+    //color: '#FFF'
 }
+},
 }));
 
 const months = [
@@ -147,6 +163,7 @@ const months = [
   'Dcember'
 ];
 const years =[
+  '2018',
   '2019',
   '2020'
 ]
@@ -154,6 +171,8 @@ const years =[
 
 export default function Home() {
   const classes = useStyles();
+  //const [cbc,setCbc]=useState("");
+
 
   return (
     <div className={classes.root}>
@@ -165,7 +184,7 @@ export default function Home() {
             <MatBalanceCard fullborder={true} allprice={false}></MatBalanceCard>
             <Grid container direction="row">
             <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:15}}>To learn about more Better you Rewards </Typography>
-          <Typography style={{fontFamily:'Lucida Sans', marginLeft:5,marginTop:30,fontSize:15,textDecorationLine:'underline'}}  className={classes.linkText}>click Here.</Typography>
+          <Typography style={{fontFamily:'Lucida Sans', marginLeft:5,marginTop:0,fontSize:15,textDecorationLine:'underline'}}  className={classes.linkText}>click Here.</Typography>
 
             </Grid>
             <Grid container direction="row">
@@ -174,11 +193,11 @@ export default function Home() {
          
             </Grid>
            <Grid container direction="row">
-          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,marginLeft:10,fontSize:23,fontWeight:'bold',color:'#2E86C1'}}>BetterY</Typography>
-          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:23,fontWeight:'bold',color:'#155724'}}>'</Typography>
-          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:23,fontWeight:'bold',color:'#FA7703'}}>o</Typography>
-          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:23,fontWeight:'bold',color:'#2E86C1'}}>u</Typography>
-          <Typography style={{fontFamily:'Lucida Sans', marginTop:30,marginLeft:5,fontSize:23,fontWeight:'bold',color:'rgb(7, 123, 34)'}}  className={classes.linkText}>Rewards</Typography>
+          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,marginLeft:10,fontSize:21,fontWeight:'bold',color:'#0D9DC7'}}>BetterY</Typography>
+          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#155724'}}>'</Typography>
+          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#FA7703'}}>o</Typography>
+          <Typography style={{fontFamily:'Lucida Sans',marginTop:30,fontSize:21,fontWeight:'bold',color:'#0D9DC7'}}>u</Typography>
+          <Typography style={{fontFamily:'Lucida Sans', marginTop:32,marginLeft:5,fontSize:18,color:'rgb(7, 123, 34)'}}  className={classes.linkText}>REWARDS</Typography>
           </Grid>
          </Grid>
          <Grid xs={8} className={classes.cardMargin}>
@@ -190,7 +209,7 @@ export default function Home() {
             <FormControl className={classes.sideMargins,classes.dropDoenWidth}>
                 Months
         {/* <InputLabel htmlFor="demo-customized-select-native">Months</InputLabel> */}
-        <NativeSelect 
+        <NativeSelect className={classes.selectBorder}
           id="demo-customized-select-native"
         //  value={age}
         //  onChange={handleChange}
@@ -223,50 +242,65 @@ export default function Home() {
              </Grid>
              </Grid>
              <Grid container direction="row" className={classes.cardMargin}>
-                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={false}></MatBalanceCard></Grid>
+                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={false} titile={"Available Rewards Balance"}></MatBalanceCard></Grid>
                  <Grid xs={1}></Grid>
-                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={true}></MatBalanceCard></Grid>
+                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={true} titile={"Earned Rewards"} ></MatBalanceCard></Grid>
              </Grid>
              <Grid container direction="row" className={classes.cardMargin}>
-                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={false}></MatBalanceCard></Grid>
+                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={false} titile={"Applied to Premium"} ></MatBalanceCard></Grid>
                  <Grid xs={1}></Grid>
-                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={true}></MatBalanceCard></Grid>
+                 <Grid xs={5}><MatBalanceCard fullborder={false} allprice={true} titile={"Applied to Gift Cards"}></MatBalanceCard></Grid>
              </Grid>
          </Grid>
      </Grid>
-     <Divider></Divider>
+     <Divider style={{marginRight:100}}></Divider>
      <Grid container direction="row" style={{marginTop:10,marginBottom:10}}>
-         <Grid xs={4}>
-            <Grid container direction="row" style={{border:'1.3px solid #2E86C1',borderRadius:3,height:45}}>
-              <Grid xs={6} className={classes.greenButton} style={{borderRight:'1.3px solid #2E86C1',textAlign:'center',paddingTop:9,cursor:'pointer',}} >
-                <Typography  className={classes.btnTextFont} style={{}}>Eligible Rewards</Typography>
+         <Grid xs={3}>
+             <Grid container direction="row" style={{border:'1px solid #0D9DC7',borderRadius:3,height:35,}}>
+              <Grid xs={6} className={classes.greenButton} style={{borderRight:'1.3px solid #0D9DC7',textAlign:'center',paddingTop:6,cursor:'pointer',color:'#fff' ,backgroundColor: '#0D9DC7',}} >
+                
+                <Typography  className={classes.btnTextFont} style={{fontSize:15}}>Eligible Rewards</Typography>
+              
               </Grid>
-              <Grid xs={6} className={classes.greenButton} style={{textAlign:'center',paddingTop:8,cursor:'pointer'}}>
-              <Typography className={classes.btnTextFont} style={{}}>Complement Rewards</Typography>
+              <Grid xs={6} className={classes.greenButton} style={{textAlign:'center',paddingTop:6,cursor:'pointer'}}>
+              <Typography className={classes.btnTextFont} style={{fontSize:15}}>Complement Rewards</Typography>
                 </Grid>
-            </Grid>
+            </Grid> 
+            {/* <Tabs  style={{border:'1px solid #0D9DC7',borderRadius:3,height:20,}}
+   value={value}
+    indicatorColor="primary"
+    textColor="primary"
+    onChange={handleChange}
+    aria-label="disabled tabs example"
+  >
+    <Tab label="Active"  className={classes.greenButton} style={{borderRight:'1px solid #0D9DC7',textAlign:'center',paddingTop:6,cursor:'pointer',color:'#fff' ,backgroundColor: '#0D9DC7',}}/>
+    <Tab label="Active" className={classes.greenButton} style={{textAlign:'center',paddingTop:6,cursor:'pointer'}}/>
+  </Tabs> */}
          </Grid>
-         <Grid xs={4}></Grid>
+         <Grid xs={6}></Grid>
          <Grid xs={2}>
              <Grid container direction="row">
                <Grid xs={5}>
                <Grid container direction="row">
-               <CheckCircleIcon className={classes.btnTextFontLastOne}></CheckCircleIcon><Typography className={classes.btnTextFont}>Eligible</Typography>
+               <FavoriteIcon className={classes.btnTextFontLastOne}>
+                 </FavoriteIcon>
+                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.avatar} /> */}
+                 <Typography style={{fontSize:13}} className={classes.btnTextFont}>Eligible</Typography>
               </Grid>
                </Grid>
                <Grid xs={1}></Grid>
                <Grid xs={6}>
                <Grid container direction="row">
-               <CheckCircleIcon className={classes.btnTextFontLast}></CheckCircleIcon><Typography className={classes.btnTextFont}>Complement</Typography>
+               <CheckCircleIcon className={classes.btnTextFontLast}></CheckCircleIcon><Typography style={{fontSize:13}} className={classes.btnTextFont}>Complement</Typography>
               </Grid>
                </Grid>
         </Grid>
          </Grid>
-         <Grid xs={2}></Grid>
+         <Grid xs={1}></Grid>
      
             </Grid>
     <Grid container direction="row">
-  
+
     </Grid>
 </div>
   );
